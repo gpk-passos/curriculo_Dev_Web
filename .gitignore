@@ -1,0 +1,9 @@
+# Cópias antigas (de quando os .7z foram extraídos) com a versão do jogo sem as correções
+Jogo_Abelha_Gabriel/Jogo_Abelha_Gabriel/
+Pong_Gabriel/Pong_Gabriel/
+
+# Arquivos do sistema e do editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.claude/
