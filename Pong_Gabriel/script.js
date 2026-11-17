@@ -12,6 +12,26 @@ var jogador1 = { px: 80, py: 310, tx: 25, ty: 100, dir: 0 };
 var jogador2 = { px: 1175, py: 310, tx: 25, ty: 100, dir: 0 };
 var bolinha = { px: 1280 / 2 - 12, py: 720 / 2 - 12, tx: 25, ty: 25, dir: 8, diry: 5 };
 
+// Som: bipes sintetizados com Web Audio, no estilo do Pong original (sem arquivos de áudio)
+var audioCtx = null;
+function Bipe(freq, duracao) {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    if (!audioCtx) audioCtx = new AC();
+    if (audioCtx.state === "suspended") audioCtx.resume();
+    var agora = audioCtx.currentTime;
+    var osc = audioCtx.createOscillator();
+    var ganho = audioCtx.createGain();
+    osc.type = "square";
+    osc.frequency.value = freq;
+    ganho.gain.setValueAtTime(0.12, agora);
+    ganho.gain.exponentialRampToValueAtTime(0.001, agora + duracao);
+    osc.connect(ganho);
+    ganho.connect(audioCtx.destination);
+    osc.start(agora);
+    osc.stop(agora + duracao);
+}
+
 document.addEventListener("keydown", function (e) {
     if (e.keyCode === 87) { jogador1.dir = -12; }
     if (e.keyCode === 83) { jogador1.dir = 12; }
@@ -20,6 +40,7 @@ document.addEventListener("keydown", function (e) {
 
     if (e.keyCode === 32) {
         if (estadoJogo === 0 || estadoJogo === 2) {
+            Bipe(660, 0.12);
             ReiniciarPartida();
         }
     }
@@ -97,6 +118,9 @@ function MovimentarBolinha() {
 
     if (bolinha.py <= 0 || bolinha.py + bolinha.ty >= 720) {
         bolinha.diry *= -1;
+        // Mantém a bola dentro da tela para não quicar (e bipar) várias vezes seguidas
+        bolinha.py = bolinha.py <= 0 ? 0 : 720 - bolinha.ty;
+        Bipe(226, 0.06);
     }
 
     if (bolinha.px < 0) AtualizarPontuacao(2);
@@ -111,12 +135,14 @@ function VerificarColisoes() {
         bolinha.px = jogador1.px + jogador1.tx; 
         bolinha.dir *= Math.abs(bolinha.dir) < limite ? -1.1 : -1;
         bolinha.diry = ((bolinha.py + (bolinha.ty / 2)) - (jogador1.py + (jogador1.ty / 2))) * 0.15;
+        Bipe(459, 0.06);
     }
 
     if (bolinha.px + bolinha.tx >= jogador2.px && bolinha.px <= jogador2.px + jogador2.tx && bolinha.py + bolinha.ty >= jogador2.py && bolinha.py <= jogador2.py + jogador2.ty) {
         bolinha.px = jogador2.px - bolinha.tx; 
         bolinha.dir *= Math.abs(bolinha.dir) < limite ? -1.1 : -1;
         bolinha.diry = ((bolinha.py + (bolinha.ty / 2)) - (jogador2.py + (jogador2.ty / 2))) * 0.15;
+        Bipe(459, 0.06);
     }
 }
 
@@ -124,6 +150,7 @@ function VerificarColisoes() {
 function AtualizarPontuacao(jogador) {
     if (jogador === 1) pts1++;
     else pts2++;
+    Bipe(490, 0.25);
 
     bolinha.px = 1280 / 2 - 12;
     bolinha.py = 720 / 2 - 12;
@@ -135,6 +162,7 @@ function AtualizarPontuacao(jogador) {
 function VerificarVitoria() {
     if (pts1 >= pontosParaVencer || pts2 >= pontosParaVencer) {
         estadoJogo = 2; 
+        Bipe(330, 0.5);
     }
 }
 
