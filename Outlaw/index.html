@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Releitura em 3D do jogo Outlaw, do Atari 2600, feita com HTML5, CSS3, JavaScript e WebGL para dois jogadores no mesmo teclado.">
+    <title>Outlaw 3D - Do Atari ao navegador</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="topo">
+        <h1 class="marca"><a href="#sobre">Outlaw</a></h1>
+        <nav aria-label="Seções do site">
+            <a href="#historia">História</a>
+            <a href="#narrativa">Narrativa</a>
+            <a href="#jogabilidade">Jogabilidade</a>
+            <a href="#controles">Controles</a>
+            <a href="#jogo" class="jogar">Jogar</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ============================ SOBRE ============================ -->
+        <section id="sobre" class="secao sobre">
+            <h2>Sobre o projeto</h2>
+            <p class="chamada">Um duelo de pistoleiros do Atari 2600, recriado em 3D para jogar no navegador.</p>
+
+            <div class="duas-colunas">
+                <div>
+                    <p>Este site apresenta a nossa releitura em 3D de <em>Outlaw</em>, o jogo que David Crane programou para o Atari 2600 e que a Atari lançou em 1978. Dois pistoleiros, um de cada lado da rua, trocam tiros com um obstáculo entre eles, e os dois jogadores dividem o mesmo teclado, cada um com as suas teclas.</p>
+
+                    <p>Há dois modos de jogo: o <strong>Duelo</strong>, para dois jogadores, e o <strong>Tiro ao Alvo</strong>, para um jogador só. São três cenários, cada um com o seu obstáculo: o cacto, a diligência e o muro.</p>
+
+                    <p>O trabalho foi feito para a atividade "Do Atari ao navegador: jogos clássicos com multiplayer", usando apenas HTML5, CSS3 e JavaScript, sem bibliotecas. O jogo é desenhado no elemento canvas, em 3D, com o WebGL, a API de 3D do próprio navegador.</p>
+
+                    <p>Mais abaixo você encontra a história do cartucho original, a narrativa que criamos, a jogabilidade e os controles. O jogo fica no <a href="#jogo">fim da página</a>, logo depois dos controles.</p>
+                </div>
+
+                <aside class="cartao equipe">
+                    <h3>Equipe</h3>
+                    <ul class="lista">
+                        <li>Gabriel</li>
+                        <li>Enzo Scarpin</li>
+                    </ul>
+                    <p class="aviso">Outlaw e Atari são marcas de seus respectivos donos. Este site é um trabalho escolar, sem fins lucrativos, e não tem ligação com a Atari. Todos os desenhos e sons desta releitura foram criados pela equipe.</p>
+                </aside>
+            </div>
+        </section>
+
+        <!-- =========================== HISTÓRIA =========================== -->
+        <section id="historia" class="secao">
+            <h2>História</h2>
+            <p class="chamada">Do fliperama japonês de 1975 ao cartucho de 2 KB que estreou um dos programadores mais famosos do Atari.</p>
+
+            <div class="duas-colunas">
+                <div>
+                    <p>A história de Outlaw começa nos fliperamas. Em 1975 a japonesa Taito lançou <em>Western Gun</em>, criado por Tomohiro Nishikado, que mais tarde faria <em>Space Invaders</em>. Nos Estados Unidos o jogo foi adaptado pela Dave Nutting Associates e lançado pela Midway, em novembro de 1975, com o nome <em>Gun Fight</em>: dois caubóis, um de cada lado da tela, trocando tiros entre cactos e diligências. Essa versão trocou os circuitos lógicos por um microprocessador e costuma ser citada como um dos primeiros videogames a fazer isso.</p>
+
+                    <p>A Atari respondeu em março de 1976 com um fliperama chamado <em>Outlaw</em>. Era bem diferente: um jogo de saque rápido para uma pessoa só, com pistola de luz, ainda montado com circuitos lógicos (TTL) em vez de processador.</p>
+
+                    <p>O Outlaw que conhecemos chegou em 1978, para o Atari VCS, o console que em 1982 passaria a se chamar Atari 2600. Foi o primeiro jogo de David Crane para o aparelho. Crane trabalhava na National Semiconductor quando Alan Miller, seu parceiro de tênis, mostrou a ele um anúncio da Atari procurando programadores de jogos; fez a entrevista na manhã seguinte e foi contratado em 24 horas. Ele conta que a Atari o colocou diante de uma estação de desenvolvimento, entregou um manual e pediu um jogo; Crane escolheu fazer um duelo de pistoleiros, inspirado em um fliperama que já tinha jogado, com dois pistoleiros atirando um no outro. Por isso o cartucho costuma ser descrito como uma versão caseira de <em>Gun Fight</em>, e não do fliperama de mesmo nome. A própria Atari, em 2023, preferiu apresentá-lo como a versão do Outlaw de 1976 que ganhou um modo para dois jogadores.</p>
+
+                    <p>Tudo cabia em um cartucho de apenas 2 KB, em um console com 128 bytes de memória RAM. Os pistoleiros e as balas usavam os dois "jogadores" e os dois "mísseis" que o chip gráfico TIA oferecia. Já o obstáculo do meio era desenhado com os blocos grandes do cenário e ficava guardado na RAM, e é isso que permitia às balas arrancar pedaços dele em algumas variações.</p>
+
+                    <p>Nas lojas Sears, que vendiam os jogos da Atari com a marca Tele-Games, o cartucho se chamava <em>Gunslinger</em>. As resenhas da época foram positivas e o jogo apareceu em praticamente todos os catálogos da Atari até 1983.</p>
+
+                    <p>David Crane saiu da Atari em 1979 e, com os colegas Alan Miller e Bob Whitehead, fundou a Activision, a primeira desenvolvedora independente de jogos para consoles; Larry Kaplan, outro programador da Atari, juntou-se a eles pouco depois. Foi lá que Crane criou <em>Pitfall!</em> (1982). Outlaw, por sua vez, nunca sumiu de vez: reapareceu em coletâneas como <em>Atari Anthology</em> (2004) e <em>Atari 50: The Anniversary Celebration</em> (2022) e, em 2023, a Atari anunciou uma edição limitada do cartucho com arte do brasileiro Butcher Billy.</p>
+                </div>
+
+                <aside class="cartao">
+                    <h3>Ficha técnica</h3>
+                    <dl class="ficha">
+                        <div><dt>Título</dt><dd>Outlaw</dd></div>
+                        <div><dt>Plataforma</dt><dd>Atari VCS (Atari 2600)</dd></div>
+                        <div><dt>Lançamento</dt><dd>1978, por volta de outubro</dd></div>
+                        <div><dt>Empresa</dt><dd>Atari, Inc.</dd></div>
+                        <div><dt>Programador</dt><dd>David Crane</dd></div>
+                        <div><dt>Código</dt><dd>CX2605</dd></div>
+                        <div><dt>Tamanho</dt><dd>2 KB de ROM</dd></div>
+                        <div><dt>Jogadores</dt><dd>1 ou 2</dd></div>
+                        <div><dt>Controle</dt><dd>Joystick</dd></div>
+                        <div><dt>Variações</dt><dd>16 jogos</dd></div>
+                        <div><dt>Nome na Sears</dt><dd>Gunslinger</dd></div>
+                        <div><dt>Inspiração</dt><dd>Gun Fight (Midway, 1975)</dd></div>
+                    </dl>
+                </aside>
+            </div>
+
+            <h3>Linha do tempo</h3>
+            <ol class="linha-do-tempo">
+                <li>
+                    <span class="ano">1975</span>
+                    <strong>Western Gun e Gun Fight</strong>
+                    A Taito lança <em>Western Gun</em> no Japão e a Midway, <em>Gun Fight</em> nos Estados Unidos: nasce o duelo de caubóis nos videogames.
+                </li>
+                <li>
+                    <span class="ano">1976</span>
+                    <strong>Outlaw nos fliperamas</strong>
+                    A Atari lança seu Outlaw de fliperama, um jogo de saque rápido com pistola de luz para um jogador.
+                </li>
+                <li>
+                    <span class="ano">1977</span>
+                    <strong>Chega o Atari VCS</strong>
+                    O console é lançado nos Estados Unidos com dois joysticks e o cartucho <em>Combat</em>, feito para duas pessoas jogarem uma contra a outra.
+                </li>
+                <li>
+                    <span class="ano">1978</span>
+                    <strong>Outlaw para o Atari VCS</strong>
+                    O cartucho CX2605, programado por David Crane, chega às lojas por volta de outubro com 16 variações de jogo. Na Sears ele é vendido como <em>Gunslinger</em>.
+                </li>
+                <li>
+                    <span class="ano">1979</span>
+                    <strong>Nasce a Activision</strong>
+                    Crane e outros programadores que saíram da Atari fundam a primeira empresa independente de jogos para consoles.
+                </li>
+                <li>
+                    <span class="ano">2004 e 2022</span>
+                    <strong>Relançamentos</strong>
+                    Outlaw entra nas coletâneas <em>Atari Anthology</em> e <em>Atari 50: The Anniversary Celebration</em>.
+                </li>
+                <li>
+                    <span class="ano">2026</span>
+                    <strong>Do Atari ao navegador</strong>
+                    Nossa equipe recria o duelo em 3D, com HTML5, CSS3, JavaScript e WebGL, no elemento canvas.
+                </li>
+            </ol>
+
+            <h3>Curiosidades</h3>
+            <ul class="lista">
+                <li>No Atari um pistoleiro em pé ocupava cerca de um terço da altura do campo. Por isso mantivemos os personagens grandes na releitura.</li>
+                <li>Os pistoleiros nunca viram de costas: o da esquerda sempre olha para a direita e o da direita é o mesmo desenho espelhado.</li>
+                <li>As cores do campo mudavam de acordo com o número do jogo escolhido. Aqui, cada cenário tem a sua paleta, com céu e luz próprios.</li>
+                <li>O manual fala em "uma série de diligências" subindo a tela, mas no programa existe uma só: quando ela sai por cima, reaparece por baixo.</li>
+                <li>O manual original se contradiz: o texto e a tabela colorida de jogos descrevem de formas diferentes os jogos 11, 12 e 15.</li>
+                <li>O cartucho não tem música. Tiro, ricochete e acerto são ruídos curtos gerados pelo chip TIA, o mesmo que desenhava a imagem.</li>
+                <li>David Crane chamou o projeto de "prova de fogo": segundo ele, foram cerca de seis meses de trabalho, e o cartucho vendeu mais de 500 mil unidades.</li>
+            </ul>
+
+            <h3>Fontes de pesquisa</h3>
+            <ul class="lista">
+                <li><a href="https://atariage.com/manual_html_page.php?SoftwareID=1190">Manual original de Outlaw (AtariAge)</a></li>
+                <li><a href="https://www.atariarchive.org/blog/outlaw-gunslinger-october-1978/">Outlaw / Gunslinger (Atari Archive)</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Outlaw_(1978_video_game)">Outlaw, jogo de 1978 (Wikipédia em inglês)</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Gun_Fight">Gun Fight (Wikipédia em inglês)</a></li>
+                <li><a href="https://strategywiki.org/wiki/Outlaw">Outlaw (StrategyWiki)</a></li>
+                <li><a href="https://www.qotile.net/minidig/disassembly/outlaw.asm">Código do cartucho comentado por Manuel Polik (MiniDig)</a></li>
+                <li><a href="https://www.retroinjection.com/post/exclusive-interview-with-david-crane">Entrevista com David Crane (Retro Injection)</a></li>
+                <li><a href="https://www.gamedeveloper.com/design/the-replay-interviews-david-crane">The Replay Interviews: David Crane (Game Developer)</a></li>
+                <li><a href="https://www.museumofplay.org/blog/gunfighter-gaming-a-history-of-the-video-game-western-part-i-1971-to-1979/">História do faroeste nos videogames (The Strong National Museum of Play)</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Activision">Activision (Wikipédia em inglês)</a></li>
+            </ul>
+        </section>
+
+        <!-- ========================== NARRATIVA ========================== -->
+        <section id="narrativa" class="secao">
+            <h2>Narrativa</h2>
+            <p class="chamada">O cartucho não contava história nenhuma. A nossa versão conta uma.</p>
+
+            <p>O manual de 1978 não traz enredo: não há nomes, cidade nem motivo para o duelo. Ele apenas avisa que um ou dois jogadores podem se tornar pistoleiros experientes. O clima de Velho Oeste vinha da ilustração da caixa, com um pistoleiro e uma diligência, e de títulos como "Código do Pistoleiro" para a lista de regras. O resto ficava por conta da imaginação de quem segurava o joystick.</p>
+
+            <h3>Duelo em Poeira Alta <span class="rotulo novo">criação da equipe</span></h3>
+
+            <p>Poeira Alta tem uma rua, um saloon e um único poço. Dois forasteiros chegaram no mesmo dia jurando que o poço era herança de família, e o xerife, cansado da discussão, decidiu do jeito antigo: duelo ao meio-dia. Como ninguém ali quer enterrar ninguém, as armas vão carregadas com sal grosso. Quem leva o tiro cai sentado na poeira, resmunga, levanta e continua. O primeiro a derrubar o rival dez vezes fica com o poço, e o outro paga a limonada.</p>
+
+            <div class="personagens">
+                <div class="personagem">
+                    <canvas class="retrato" width="84" height="126" data-lado="1" data-estado="parado"></canvas>
+                    <div>
+                        <h3>Chico Ferrugem</h3>
+                        <p>O pistoleiro laranja. Veio do leste, fala pouco e jura que nunca errou um tiro reto. Fica do lado esquerdo da rua.</p>
+                    </div>
+                </div>
+                <div class="personagem">
+                    <canvas class="retrato" width="84" height="126" data-lado="-1" data-estado="parado"></canvas>
+                    <div>
+                        <h3>Bento Brasa</h3>
+                        <p>O pistoleiro vermelho. Veio do oeste e prefere o tiro de ricochete, "porque ninguém espera". Fica do lado direito.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p>Entre os dois sempre há alguma coisa atrapalhando, e cada cenário do jogo é um canto da cidade. No largo do poço cresce o <strong>cacto</strong> mais velho da região, que ninguém teve coragem de cortar. Na rua principal passa a <strong>diligência</strong> do correio, que não para por duelo nenhum. E atrás do curral fica o <strong>muro</strong> de tijolos: ali só se acerta o adversário depois de abrir um buraco à bala. Quem quiser treinar sozinho pode ir para os fundos do saloon, onde um alvo vai e volta pendurado numa corda.</p>
+        </section>
+
+        <!-- ========================= JOGABILIDADE ========================= -->
+        <section id="jogabilidade" class="secao">
+            <h2>Jogabilidade</h2>
+            <p class="chamada">O que o cartucho fazia em 1978 e o que mantivemos, adaptamos e criamos.</p>
+
+            <h3>Como era no Atari</h3>
+
+            <p>O objetivo é simples: acertar o outro pistoleiro antes que ele acerte você. Cada acerto vale um ponto, quem é atingido cai sentado, e vence o primeiro que chegar a dez pontos. Não há limite de tempo nos duelos.</p>
+
+            <p>O joystick move o pistoleiro nas quatro direções. Para atirar, o jogador segura o botão vermelho: o personagem para e estende o braço. Com o botão apertado, empurrar o joystick para a frente levanta o braço e puxar para trás abaixa. A bala só sai quando o botão é solto, e pode ir reta ou em diagonal, para cima ou para baixo. Em todos os jogos as balas ricocheteiam nas bordas de cima e de baixo do campo, o que permite acertar o rival por trás do obstáculo. Cada jogador só pode ter uma bala na tela por vez.</p>
+
+            <p>No meio do campo sempre existe um obstáculo: um cacto, uma diligência ou um muro. O cartucho traz 16 jogos, escolhidos pela chave <em>Game Select</em> do console, que combinam esses obstáculos com quatro recursos:</p>
+
+            <div class="grade-cartoes">
+                <div class="cartao">
+                    <h3>Blowaway</h3>
+                    <p>As balas ficam mais fortes e arrancam pedaços do obstáculo até ele sumir. Todo jogo com muro tem esse recurso, senão ninguém seria atingido.</p>
+                </div>
+                <div class="cartao">
+                    <h3>Getaway</h3>
+                    <p>O pistoleiro pode andar logo depois de atirar. Sem ele, fica parado até a bala acertar alguma coisa ou sair da tela.</p>
+                </div>
+                <div class="cartao">
+                    <h3>Six Shooter</h3>
+                    <p>Cada arma tem só seis balas. A munição nova só chega quando os dois jogadores gastaram as suas.</p>
+                </div>
+                <div class="cartao">
+                    <h3>Barreira móvel</h3>
+                    <p>A diligência ou o muro sobem pela tela sem parar. O cacto nunca se move.</p>
+                </div>
+            </div>
+
+            <p>As chaves de dificuldade do console funcionam como desvantagem (<em>Handicap</em>): na posição A, a bala de um jogador desaparece no ar se ele for atingido antes; na posição B ela continua voando e ainda pode acertar o rival, e assim os dois podem pontuar na mesma troca de tiros. Os jogos 13 a 16 são para uma pessoa (<em>Target Shoot</em>): o pistoleiro tem 99 segundos para acertar dez vezes um alvo que sobe e desce do outro lado.</p>
+
+            <div class="rolagem">
+                <table>
+                    <caption>Os 16 jogos do cartucho original</caption>
+                    <thead>
+                        <tr>
+                            <th>Jogo</th>
+                            <th>Tipo</th>
+                            <th>Obstáculo</th>
+                            <th>Recursos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Duelo</td><td>Cacto</td><td>-</td></tr>
+                        <tr><td>2</td><td>Duelo</td><td>Cacto</td><td>Getaway</td></tr>
+                        <tr><td>3</td><td>Duelo</td><td>Cacto</td><td>Blowaway</td></tr>
+                        <tr><td>4</td><td>Duelo</td><td>Cacto</td><td>Blowaway, Six Shooter</td></tr>
+                        <tr><td>5</td><td>Duelo</td><td>Diligência</td><td>-</td></tr>
+                        <tr><td>6</td><td>Duelo</td><td>Diligência móvel</td><td>-</td></tr>
+                        <tr><td>7</td><td>Duelo</td><td>Diligência</td><td>Blowaway</td></tr>
+                        <tr><td>8</td><td>Duelo</td><td>Diligência móvel</td><td>Blowaway</td></tr>
+                        <tr><td>9</td><td>Duelo</td><td>Diligência móvel</td><td>Blowaway, Six Shooter</td></tr>
+                        <tr><td>10</td><td>Duelo</td><td>Muro</td><td>Blowaway, Six Shooter</td></tr>
+                        <tr><td>11</td><td>Duelo</td><td>Muro móvel</td><td>Blowaway</td></tr>
+                        <tr><td>12</td><td>Duelo</td><td>Muro móvel</td><td>Blowaway, Six Shooter</td></tr>
+                        <tr><td>13</td><td>Tiro ao alvo</td><td>Cacto</td><td>-</td></tr>
+                        <tr><td>14</td><td>Tiro ao alvo</td><td>Cacto</td><td>Blowaway</td></tr>
+                        <tr><td>15</td><td>Tiro ao alvo</td><td>Diligência móvel</td><td>-</td></tr>
+                        <tr><td>16</td><td>Tiro ao alvo</td><td>Diligência móvel</td><td>Blowaway</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="nota">Tabela montada a partir do programa do cartucho, que foi desmontado e comentado por fãs, e do guia da StrategyWiki. O texto do manual impresso descreve os jogos 11, 12 e 15 de forma um pouco diferente.</p>
+
+            <h3>Como é na nossa releitura</h3>
+
+            <p>A mecânica principal é a do cartucho: dois pistoleiros, um de cada lado, um obstáculo no meio, mira em três direções segurando o gatilho, balas que ricocheteiam, uma bala por jogador e vitória para quem fizer dez pontos primeiro. A diferença que mais aparece é que o duelo agora acontece numa rua em 3D: o campo virou a rua principal de Poeira Alta, com a cerca e as fachadas da cidade no fundo, e a tecla <kbd>C</kbd> troca entre três câmeras. A outra mudança foi a forma de escolher o jogo. No lugar da chave <em>Game Select</em> e do número de 1 a 16, o menu deixa ligar e desligar cada recurso separadamente, e avisa quando a combinação montada é igual a um dos jogos de 1978.</p>
+
+            <div class="rolagem">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Opção do menu</th>
+                            <th>No cartucho</th>
+                            <th>O que faz</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Modo</td>
+                            <td>Jogos 1 a 12 ou 13 a 16</td>
+                            <td><strong>Duelo</strong> para dois jogadores ou <strong>Tiro ao Alvo</strong> para um, com 99 segundos no relógio.</td>
+                        </tr>
+                        <tr>
+                            <td>Cenário</td>
+                            <td>Cactus, Stage Coach, Wall</td>
+                            <td>Escolhe o obstáculo: cacto, diligência ou muro. As cores do campo, do céu e da luz mudam junto.</td>
+                        </tr>
+                        <tr>
+                            <td>Barreira</td>
+                            <td>Moving Barrier</td>
+                            <td><strong>Móvel</strong> faz a diligência ou o muro andarem sem parar para o fundo da rua; o que sai lá atrás volta pela frente. O cacto fica sempre parado.</td>
+                        </tr>
+                        <tr>
+                            <td>Demolição</td>
+                            <td>Blowaway</td>
+                            <td>Cada bala arranca um bloco do obstáculo. Com o muro fica sempre ligada.</td>
+                        </tr>
+                        <tr>
+                            <td>Fuga</td>
+                            <td>Getaway</td>
+                            <td>Permite andar logo depois do tiro, sem esperar a bala sumir.</td>
+                        </tr>
+                        <tr>
+                            <td>Munição</td>
+                            <td>Six Shooter</td>
+                            <td><strong>Seis balas</strong> para cada um; a recarga só vem quando os dois ficam sem nenhuma.</td>
+                        </tr>
+                        <tr>
+                            <td>Vitória</td>
+                            <td>Sempre 10 pontos</td>
+                            <td>Partidas de 5, 10 ou 15 pontos.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grade-cartoes">
+                <div class="cartao">
+                    <h3>Mantivemos</h3>
+                    <ul class="lista">
+                        <li>Segurar para mirar, soltar para atirar.</li>
+                        <li>Ricochete nas duas bordas do campo, que agora são a cerca do fundo e a grade da frente.</li>
+                        <li>Obstáculo feito de blocos numa grade de 18 linhas.</li>
+                        <li>O atingido cai sentado e o duelo para por um segundo.</li>
+                        <li>A bala de quem caiu continua voando (posição B da chave de dificuldade).</li>
+                    </ul>
+                </div>
+                <div class="cartao">
+                    <h3>Adaptamos</h3>
+                    <ul class="lista">
+                        <li>Dois joysticks viraram dois grupos de teclas no mesmo teclado.</li>
+                        <li>O menu substitui as chaves do console.</li>
+                        <li>Cima e baixo da tela viraram profundidade: na rua em 3D, cima é o fundo e baixo é a frente.</li>
+                        <li>Cada pistoleiro fica sempre do seu lado do obstáculo.</li>
+                        <li>Os sons são gerados pelo navegador, imitando os ruídos do chip TIA.</li>
+                    </ul>
+                </div>
+                <div class="cartao">
+                    <h3>Criamos <span class="rotulo novo">novo</span></h3>
+                    <ul class="lista">
+                        <li>Um mundo em 3D feito de voxels, com os pistoleiros como bonecos de cubinhos, sempre de frente um para o outro.</li>
+                        <li>Três câmeras (clássica, alta e cinema) e sombras em tempo real.</li>
+                        <li>Janelas na diligência por onde a bala passa e buracos abertos à bala no muro.</li>
+                        <li>Combinações de regras que não existiam nos 16 jogos.</li>
+                        <li>Pistoleiros com chapéu, lenço, coldre e revólver, que na vitória se viram para a plateia e comemoram.</li>
+                        <li>Contagem "Preparar... Fogo!", estilhaços e tremida de tela.</li>
+                        <li>Partidas de 5 ou 15 pontos, pausa, tela cheia e empate quando os dois chegam juntos à meta.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Dicas de duelo</h3>
+            <ul class="lista">
+                <li>Tiro reto é rápido de dar, mas fácil de prever. Use a diagonal para fazer a bala bater na cerca do fundo ou na grade da frente e contornar o obstáculo.</li>
+                <li>Sem a Fuga, você fica parado enquanto a sua bala voa. Atire quando o rival também estiver preso.</li>
+                <li>Com Seis Balas, não desperdice: se você gastar tudo primeiro, o adversário atira à vontade até a recarga.</li>
+                <li>Na barreira móvel com Demolição, o buraco anda junto com o muro. Acompanhe-o andando para o fundo.</li>
+                <li>Se o obstáculo esconder demais o rival, aperte <kbd>C</kbd>: a câmera alta mostra a rua inteira de cima.</li>
+            </ul>
+        </section>
+
+        <!-- ========================== CONTROLES ========================== -->
+        <section id="controles" class="secao">
+            <h2>Controles</h2>
+            <p class="chamada">Dois jogadores, um teclado: cada um fica com um lado, o laranja à esquerda e o vermelho à direita.</p>
+
+            <div class="rolagem">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ação</th>
+                            <th>Jogador 1 (laranja)</th>
+                            <th>Jogador 2 (vermelho)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Andar para o fundo / para a frente</td>
+                            <td><kbd>W</kbd> / <kbd>S</kbd></td>
+                            <td><kbd>&uarr;</kbd> / <kbd>&darr;</kbd></td>
+                        </tr>
+                        <tr>
+                            <td>Andar para a esquerda / direita</td>
+                            <td><kbd>A</kbd> / <kbd>D</kbd></td>
+                            <td><kbd>&larr;</kbd> / <kbd>&rarr;</kbd></td>
+                        </tr>
+                        <tr>
+                            <td>Sacar a arma (segurar)</td>
+                            <td><kbd>F</kbd> ou <kbd>Espaço</kbd></td>
+                            <td><kbd>Enter</kbd> ou <kbd>0</kbd> do teclado numérico</td>
+                        </tr>
+                        <tr>
+                            <td>Mirar na diagonal para o fundo / para a frente (com a arma sacada)</td>
+                            <td><kbd>W</kbd> / <kbd>S</kbd></td>
+                            <td><kbd>&uarr;</kbd> / <kbd>&darr;</kbd></td>
+                        </tr>
+                        <tr>
+                            <td>Atirar</td>
+                            <td colspan="2">Soltar a tecla de tiro</td>
+                        </tr>
+                        <tr>
+                            <td>Trocar a câmera (clássica, alta, cinema)</td>
+                            <td colspan="2"><kbd>C</kbd> (qualquer um dos dois)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grade-cartoes">
+                <div class="cartao">
+                    <h3>Como mirar</h3>
+                    <p>Enquanto a tecla de tiro está apertada, o pistoleiro fica parado com o braço estendido e o revólver na frente do rosto; a bala sai da ponta do cano. Sem apertar mais nada, o tiro sai reto, de um lado da rua para o outro. Segurando também a tecla de andar para o fundo (<kbd>W</kbd> ou <kbd>&uarr;</kbd>), o pistoleiro gira o corpo em direção ao fundo e a bala atravessa a rua na diagonal; com a de andar para a frente (<kbd>S</kbd> ou <kbd>&darr;</kbd>), ele gira para a frente. A bala só sai quando a tecla de tiro é solta, exatamente como no botão vermelho do joystick do Atari, e ricocheteia na cerca do fundo e na grade baixa da frente.</p>
+                </div>
+                <div class="cartao">
+                    <h3>No menu</h3>
+                    <p><kbd>W</kbd> <kbd>S</kbd> ou <kbd>&uarr;</kbd> <kbd>&darr;</kbd> escolhem a opção, <kbd>A</kbd> <kbd>D</kbd> ou <kbd>&larr;</kbd> <kbd>&rarr;</kbd> mudam o valor e <kbd>Enter</kbd> ou <kbd>Espaço</kbd> começam a partida.</p>
+                </div>
+                <div class="cartao">
+                    <h3>Teclas gerais</h3>
+                    <p><kbd>P</kbd> pausa e continua. <kbd>Esc</kbd> pausa e, com o jogo pausado ou encerrado, volta ao menu. <kbd>M</kbd> liga e desliga o som. <kbd>C</kbd> troca a câmera entre clássica, alta e cinema, a qualquer momento. No modo Tiro ao Alvo só o jogador 1 joga.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ JOGO ============================ -->
+        <section id="jogo" class="secao-jogo" aria-label="Jogo">
+            <div class="palco" id="palco">
+                <div class="tela">
+                    <canvas id="tela3d" aria-hidden="true"></canvas>
+                    <canvas id="hud" width="900" height="640" role="img" aria-label="Outlaw 3D: duelo para dois jogadores">
+                        Seu navegador não tem suporte ao elemento canvas.
+                    </canvas>
+                </div>
+            </div>
+
+            <div class="barra-jogo">
+                <button type="button" id="botaoTelaCheia">Tela cheia</button>
+                <button type="button" id="botaoSom" title="Atalho: tecla M" aria-keyshortcuts="M">Som: ligado</button>
+                <button type="button" id="botaoCamera" title="Atalho: tecla C" aria-keyshortcuts="C">Câmera: clássica</button>
+                <button type="button" id="botaoGraficos" title="Alto, médio ou baixo: baixe se o jogo ficar lento">Gráficos: alto</button>
+            </div>
+            <p class="teclas-jogo"><span><strong class="laranja">Jogador 1:</strong> <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> anda, <kbd>F</kbd> atira.</span> <span><strong class="vermelho">Jogador 2:</strong> setas andam, <kbd>Enter</kbd> atira.</span> <span>Segure o tiro para mirar e solte para atirar.</span> <span><kbd>C</kbd> câmera, <kbd>P</kbd> pausa.</span></p>
+        </section>
+    </main>
+
+    <script src="js/sprites.js" charset="utf-8"></script>
+    <script src="js/motor3d.js" charset="utf-8"></script>
+    <script src="js/avulso.js" charset="utf-8"></script>
+    <script src="js/jogo.js" charset="utf-8"></script>
+    <script src="js/site.js" charset="utf-8"></script>
+</body>
+</html>

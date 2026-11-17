@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Gabriel Kamphorst Passos</title>
+    <meta name="description"
+        content="Currículo e portfólio de Gabriel Kamphorst Passos, desenvolvedor back-end com C#, ASP.NET Core, Entity Framework e SQL.">
+    <meta name="theme-color" content="#0D1326">
+    <meta property="og:title" content="Gabriel Kamphorst Passos - Desenvolvedor Back-end">
+    <meta property="og:description" content="Currículo e portfólio: C#, ASP.NET Core, Entity Framework, SQL e Angular.">
+    <meta property="og:type" content="website">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D1326'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='28' text-anchor='middle' fill='%2300D2FF'%3EGK%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+    <div id="progresso-leitura" aria-hidden="true"></div>
+    <div id="overlay-menu" aria-hidden="true"></div>
+
+    <nav id="menu-lateral" aria-label="Seções do currículo" inert>
+        <button type="button" class="btn-fechar" id="btn-fechar-menu" aria-label="Fechar menu">&times;</button>
+        <a href="#home" class="link-menu">Home</a>
+        <a href="#dados-pessoais" class="link-menu">Dados Pessoais</a>
+        <a href="#formacao" class="link-menu">Formação</a>
+        <a href="#conhecimentos" class="link-menu">Conhecimentos</a>
+        <a href="#experiencia" class="link-menu">Experiência</a>
+        <a href="#habilidades" class="link-menu">Habilidades</a>
+        <a href="#idiomas" class="link-menu">Idiomas</a>
+        <a href="#portfolio" class="link-menu">Portfólio</a>
+    </nav>
+
+    <div id="conteudo-principal">
+
+        <header class="header-principal">
+            <button type="button" class="btn-abrir" id="btn-abrir-menu" aria-label="Abrir menu"
+                aria-controls="menu-lateral" aria-expanded="false">☰</button>
+            <div class="header-textos">
+                <h1 class="titulo-nome">Gabriel Kamphorst Passos</h1>
+                <p class="subtitulo-prof">Desenvolvedor Back-end</p>
+            </div>
+        </header>
+
+        <main class="container" id="conteudo">
+
+            <section id="home" class="secao secao-clara">
+                <h2 class="titulo-secao">Apresentação</h2>
+                <p class="texto-padrao">Desenvolvedor Back-end em formação no último ano do curso técnico pelo IFPR,
+                    apaixonado por construir sistemas robustos e eficientes. Tenho forte atuação com o ecossistema .NET
+                    (C#, ASP.NET Core, Entity Framework) e desenvolvimento de APIs RESTful. Além disso, possuo
+                    conhecimentos em bancos de dados relacionais (SQL) e na integração de interfaces utilizando Angular
+                    e TypeScript. Sou movido por desafios lógicos e busco oportunidades profissionais para aplicar minha
+                    base técnica e colaborar na entrega de soluções escaláveis e de alto impacto.</p>
+                <div class="acoes-home">
+                    <a class="btn-acao btn-acao-principal" href="mailto:gabrielkp041007@gmail.com">Enviar e-mail</a>
+                    <button type="button" class="btn-acao" id="btn-pdf">Salvar currículo em PDF</button>
+                </div>
+            </section>
+
+            <section id="dados-pessoais" class="secao secao-escura">
+                <h2 class="titulo-secao">Dados Pessoais</h2>
+                <div class="card-perfil">
+                    <img src="imagens/foto.jpeg" alt="Foto de Gabriel Kamphorst Passos" class="foto-perfil" width="160" height="160">
+                    <ul class="lista-dados">
+                        <li><strong>Nome Completo:</strong> Gabriel Kamphorst Passos</li>
+                        <li>
+                            <strong>Email:</strong>
+                            <a class="link-contato" href="mailto:gabrielkp041007@gmail.com">gabrielkp041007@gmail.com</a>
+                            <button type="button" class="btn-copiar" data-copiar="gabrielkp041007@gmail.com"
+                                data-rotulo="E-mail" aria-label="Copiar e-mail">Copiar</button>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="formacao" class="secao secao-clara">
+                <h2 class="titulo-secao">Formação Acadêmica</h2>
+                <div class="item-formacao">
+                    <h3 class="titulo-curso">Técnico em Programação de Jogos Digitais</h3>
+                    <p class="texto-padrao"><strong>Instituição:</strong> Instituto Federal do Paraná - Campus Curitiba
+                    </p>
+                    <p class="texto-padrao"><strong>Status:</strong> Em formação (2023 - 2026)</p>
+                </div>
+                <div class="item-formacao">
+                    <h3 class="titulo-curso">Ensino Fundamental II</h3>
+                    <p class="texto-padrao"><strong>Instituição:</strong> Colégio Estadual Santa Catarina</p>
+                    <p class="texto-padrao"><strong>Período:</strong> 2019 - 2022</p>
+                </div>
+            </section>
+
+            <section id="conhecimentos" class="secao secao-escura">
+                <h2 class="titulo-secao">Conhecimentos Técnicos</h2>
+                <ul class="grid-conhecimentos">
+                    <li class="badge-tech">C#</li>
+                    <li class="badge-tech">ASP.NET Core</li>
+                    <li class="badge-tech">Entity Framework Core</li>
+                    <li class="badge-tech">Rest/ApisRestfull</li>
+                    <li class="badge-tech">SQL</li>
+                    <li class="badge-tech">Angular</li>
+                    <li class="badge-tech">TypeScript</li>
+                    <li class="badge-tech">JavaScript</li>
+                    <li class="badge-tech">HTML / CSS</li>
+                    <li class="badge-tech">Git / GitHub</li>
+                    <li class="badge-tech">C++</li>
+                    <li class="badge-tech">Unity</li>
+                </ul>
+                <p class="texto-destaque"><strong>Conceitos:</strong> POO, Back-End, Arquitetura de Software, Bancos de
+                    Dados Relacionais, Controle de Versão</p>
+            </section>
+
+            <section id="experiencia" class="secao secao-clara">
+                <h2 class="titulo-secao">Experiência</h2>
+                <details class="detalhes-exp">
+                    <summary class="resumo-exp">Bolsa de Iniciação Científica - CNPq <span class="data-exp">(Set/2024 -
+                            Ago/2025)</span></summary>
+                    <div class="conteudo-exp">
+                        <p><strong>Projeto:</strong> Desenvolvimento de jogo educacional de química</p>
+                        <ul class="lista-atividades">
+                            <li>Desenvolvimento da arquitetura e mecânicas principais em C#</li>
+                            <li>Implementação de algoritmos de validação e lógica de negócio</li>
+                            <li>Trabalho em equipe utilizando Git/GitHub</li>
+                        </ul>
+                    </div>
+                </details>
+            </section>
+
+            <section id="habilidades" class="secao secao-escura">
+                <h2 class="titulo-secao">Habilidades</h2>
+                <ul class="lista-habilidades">
+                    <li>Lógica de programação avançada</li>
+                    <li>Trabalho em equipe</li>
+                    <li>Comprometimento com prazos</li>
+                    <li>Comunicação técnica clara</li>
+                    <li>Proatividade</li>
+                    <li>Organização</li>
+                    <li>Resolução de problemas</li>
+                </ul>
+            </section>
+
+            <section id="idiomas" class="secao secao-clara">
+                <h2 class="titulo-secao">Idiomas</h2>
+                <ul class="lista-idiomas">
+                    <li><strong>Português:</strong> Nativo / Avançado</li>
+                    <li><strong>Inglês:</strong> Intermediário (foco em leitura técnica)</li>
+                    <li><strong>Espanhol:</strong> Básico</li>
+                </ul>
+            </section>
+
+            <section id="portfolio" class="secao secao-escura">
+                <h2 class="titulo-secao">Portfólio &amp; Projetos</h2>
+
+                <div class="carrossel-wrapper" role="region" aria-roledescription="carrossel"
+                    aria-label="Projetos do portfólio">
+                    <button type="button" class="btn-carrossel prev" aria-label="Projeto anterior">&#10094;</button>
+
+                    <div class="carrossel-viewport">
+                        <div class="carrossel-track" id="track-projetos">
+
+                            <button type="button" class="carrossel-item click-modal" data-img="imagens/jogo-outlaw.jpg"
+                                data-titulo="Outlaw 3D" data-contexto="Jogo 3D (WebGL)" data-ano="2026"
+                                data-descricao="Releitura em 3D do Outlaw, clássico do Atari 2600 lançado em 1978, feita em equipe com HTML5, CSS3, JavaScript e WebGL, sem bibliotecas. Tem o modo Duelo, para dois jogadores no mesmo teclado, e o Tiro ao Alvo, para um jogador, com três cenários. O site completo do projeto abre ao jogar."
+                                data-controles="Jogador 1: W A S D andam e F atira. Jogador 2: setas andam e Enter atira. Segure o tiro para mirar e solte para atirar. C troca a câmera e P pausa."
+                                data-jogo="Outlaw/index.html">
+                                <img src="imagens/jogo-outlaw.jpg" alt="Menu inicial do Outlaw 3D, com cenário do velho oeste em 3D"
+                                    draggable="false" decoding="async">
+                                <span class="selo-jogavel">Jogável</span>
+                                <span class="legenda-projeto">Outlaw 3D</span>
+                            </button>
+
+                            <button type="button" class="carrossel-item click-modal" data-img="imagens/jogo-abelha.png"
+                                data-titulo="Jogo da Abelha" data-contexto="Jogo 2D (JavaScript)" data-ano="2026"
+                                data-descricao="Jogo em canvas feito com orientação a objetos em JavaScript. Você controla a abelha para coletar flores e desviar das aranhas, com telas de início, vitória e game over, música e efeitos sonoros."
+                                data-controles="Enter inicia o jogo. A e D, ou as setas esquerda e direita, movem a abelha."
+                                data-jogo="Jogo_Abelha_Gabriel/index.html" data-jogo-largura="960" data-jogo-altura="860">
+                                <img src="imagens/jogo-abelha.png" alt="Tela inicial do Jogo da Abelha, com listras amarelas e o texto Bee Honey"
+                                    draggable="false" decoding="async">
+                                <span class="selo-jogavel">Jogável</span>
+                                <span class="legenda-projeto">Jogo da Abelha</span>
+                            </button>
+
+                            <button type="button" class="carrossel-item click-modal" data-img="imagens/jogo-pong.png"
+                                data-titulo="Pong" data-contexto="Jogo 2D (JavaScript)" data-ano="2026"
+                                data-descricao="Releitura do clássico Pong para dois jogadores no mesmo teclado, desenhada em HTML5 canvas e programada em JavaScript."
+                                data-controles="Espaço inicia a partida. Jogador 1: W e S movem a raquete. Jogador 2: setas para cima e para baixo."
+                                data-jogo="Pong_Gabriel/index.html" data-jogo-largura="1300" data-jogo-altura="740">
+                                <img src="imagens/jogo-pong.png" alt="Tela inicial do Pong, com o título e a instrução para pressionar espaço"
+                                    draggable="false" decoding="async">
+                                <span class="selo-jogavel">Jogável</span>
+                                <span class="legenda-projeto">Pong</span>
+                            </button>
+
+                            <button type="button" class="carrossel-item click-modal" data-img="imagens/proj1.png"
+                                data-titulo="Model Sheet de Personagem" data-contexto="Design & Animação"
+                                data-ano="2024"
+                                data-descricao="Model Sheet de personagem para animação 2D. Desenvolvimento focado na padronização de proporções e expressões para garantir consistência visual durante o processo de animação quadro a quadro.">
+                                <img src="imagens/proj1.png" alt="Model Sheet de personagem para animação 2D"
+                                    draggable="false" loading="lazy" decoding="async">
+                                <span class="legenda-projeto">Model Sheet de Personagem</span>
+                            </button>
+
+                            <button type="button" class="carrossel-item click-modal" data-img="imagens/proj2.png"
+                                data-titulo="Torre e Casa Rústica" data-contexto="Modelagem 3D" data-ano="2024"
+                                data-descricao="Trabalho final de modelagem de design 2D e 3D. O projeto exigiu planejamento estrutural e renderização de texturas e iluminação para criar um ambiente tridimensional imersivo e funcional.">
+                                <img src="imagens/proj2.png" alt="Trabalho final de modelagem de design 2D e 3D"
+                                    draggable="false" loading="lazy" decoding="async">
+                                <span class="legenda-projeto">Modelagem 2D e 3D</span>
+                            </button>
+
+                            <button type="button" class="carrossel-item click-modal" data-img="imagens/proj3.png"
+                                data-titulo="Jogo de Plataforma: Samurai" data-contexto="Programação 2D"
+                                data-ano="2024"
+                                data-descricao="Trabalho em grupo final de programação 2D. O jogo apresenta movimentação em plataforma, sistema de colisões, animações baseadas em sprites e lógica de física aplicada em engine.">
+                                <img src="imagens/proj3.png" alt="Trabalho em grupo final de programação 2D"
+                                    draggable="false" loading="lazy" decoding="async">
+                                <span class="legenda-projeto">Programação 2D (Samurai)</span>
+                            </button>
+
+                            <button type="button" class="carrossel-item click-modal" data-img="imagens/proj4.png"
+                                data-titulo="The Faroh Tomb" data-contexto="Programação de Jogos 3D" data-ano="2025"
+                                data-descricao="Trabalho de conclusão em grupo de Programação de Jogos 3D. Consiste em uma tumba interativa onde o jogador explora o ambiente em primeira pessoa, com sistemas lógicos de interação de objetos, UI e física em três dimensões.">
+                                <img src="imagens/proj4.png"
+                                    alt="Trabalho de conclusão em grupo de Programação de Jogos 3D" draggable="false" loading="lazy" decoding="async">
+                                <span class="legenda-projeto">The Faroh Tomb</span>
+                            </button>
+
+                            <button type="button" class="carrossel-item click-modal" data-img="imagens/proj5.png"
+                                data-titulo="Tela inicial" data-contexto="Design de interface do projeto 3D"
+                                data-ano="2025"
+                                data-descricao="Trabalho de conclusão em grupo de Programação de Jogos 3D. Consiste em uma tumba interativa onde o jogador explora o ambiente em primeira pessoa, com sistemas lógicos de interação de objetos, UI e física em três dimensões.">
+                                <img src="imagens/proj5.png" alt="Menu inicial (The Faroh Tomb)" draggable="false" loading="lazy" decoding="async">
+                                <span class="legenda-projeto">Menu inicial (The Faroh Tomb)</span>
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-carrossel next" aria-label="Próximo projeto">&#10095;</button>
+                </div>
+                <p class="dica-carrossel">Use as setas do teclado ou arraste para ver mais projetos. Os jogos podem ser jogados aqui mesmo.</p>
+            </section>
+
+            <div id="modal-projeto" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+                <div class="modal-content">
+                    <button type="button" class="fechar-modal" id="btn-fechar-modal"
+                        aria-label="Fechar projeto">&times;</button>
+
+                    <div id="modal-detalhes">
+                        <img id="modal-img" src="" alt="">
+
+                        <h3 id="modal-titulo"></h3>
+
+                        <div class="modal-infos">
+                            <span class="badge-modal" id="modal-contexto"></span>
+                            <span class="badge-modal" id="modal-ano"></span>
+                        </div>
+
+                        <p id="modal-descricao"></p>
+                        <p id="modal-controles" class="modal-controles" hidden></p>
+
+                        <div class="modal-acoes">
+                            <button type="button" class="btn-acao btn-acao-principal" id="modal-jogar" hidden>Jogar</button>
+                        </div>
+
+                        <div class="modal-nav">
+                            <button type="button" class="btn-acao" id="modal-anterior">Anterior</button>
+                            <span id="modal-contador" aria-live="polite"></span>
+                            <button type="button" class="btn-acao" id="modal-proximo">Próximo</button>
+                        </div>
+                    </div>
+
+                    <div id="modal-jogo" hidden>
+                        <div class="jogo-barra">
+                            <button type="button" class="btn-acao" id="btn-sair-jogo">Voltar ao projeto</button>
+                            <span id="jogo-titulo" class="jogo-titulo"></span>
+                        </div>
+                        <div id="area-jogo">
+                            <div id="caixa-jogo">
+                                <iframe id="frame-jogo" title="Jogo" allow="autoplay; fullscreen"></iframe>
+                            </div>
+                        </div>
+                        <p id="jogo-controles" class="modal-controles"></p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+
+        <footer id="rodape-site">
+            <p>&copy; 2026 Gabriel Kamphorst Passos. Projeto 1º Trimestre - IFPR</p>
+        </footer>
+
+    </div>
+
+    <button type="button" id="btn-topo" aria-label="Voltar ao topo" hidden>&#8593;</button>
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script/script.js"></script>
+</body>
+
+</html>

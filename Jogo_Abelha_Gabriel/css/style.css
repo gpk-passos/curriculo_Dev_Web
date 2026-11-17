@@ -1,0 +1,54 @@
+body {
+    background-color: #FCE883;
+    
+    
+    background-image: 
+        url('../img/fundo_flores.png'), 
+        url('../img/fundo_flores.png'), 
+        url('../img/fundo_flores1.png'),
+        url('../img/fundo_flores1.png'), 
+        url('../img/fundo_flores2.png'),
+        url('../img/fundo_flores2.png'); 
+        
+    background-repeat: 
+        no-repeat, no-repeat, no-repeat, 
+        no-repeat, no-repeat, no-repeat; 
+    
+    
+    background-size: 
+        45px, 50px, 
+        40px, 55px, 
+        48px, 42px; 
+    
+    color: #333;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    
+    
+    animation: moverVariasFlores 12s linear infinite; 
+}
+
+@keyframes moverVariasFlores {
+    from {
+       
+        background-position: 
+            5% -100px,    
+            85% -400px,   
+            15% -250px,   
+            95% -150px,   
+            25% -500px,  
+            75% -300px;   
+    }
+    to {
+       
+        background-position: 
+            5% 110vh, 
+            85% calc(110vh + 300px), 
+            15% calc(110vh + 150px), 
+            95% calc(110vh + 50px), 
+            25% calc(110vh + 400px), 
+            75% calc(110vh + 200px); 
+    }
+}

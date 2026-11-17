@@ -1,0 +1,671 @@
+/* =====================================================================
+   OUTLAW - estilo do site
+   Paleta tirada do próprio jogo: noite do deserto, laranja e vermelho
+   dos pistoleiros, roxo do cacto e amarelo do placar.
+   ===================================================================== */
+
+:root {
+    --noite: #120d24;
+    --noite-clara: #1b1433;
+    --painel: #221a44;
+    --linha: #3a2f6b;
+    --areia: #f4e9d0;
+    --areia-fraca: #b9b0d6;
+    --laranja: #f28c28;
+    --vermelho: #e53935;
+    --roxo: #8e24aa;
+    --amarelo: #ffd54f;
+    --azul: #2a2fb5;
+    --altura-topo: 56px;
+    --altura-janela: 100vh;
+}
+
+/* No celular e no tablet, 100vh é a altura com as barras do navegador
+   escondidas; 100svh é a altura com elas à mostra, a que o jogo precisa
+   para caber inteiro. Navegador antigo fica com o 100vh. */
+@supports (height: 100svh) {
+    :root {
+        --altura-janela: 100svh;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--noite);
+    color: var(--areia);
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+a {
+    color: var(--amarelo);
+}
+
+a:hover {
+    color: #fff;
+}
+
+h1, h2, h3, .marca, .rotulo {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ------------------------------ topo ------------------------------ */
+
+.topo {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: var(--altura-topo);
+    padding: 0 24px;
+    background-color: var(--noite-clara);
+    /* faixas coloridas, como nas caixas dos cartuchos da Atari */
+    border-bottom: 4px solid var(--laranja);
+    box-shadow: 0 4px 0 var(--vermelho), 0 8px 0 var(--roxo);
+}
+
+.marca {
+    margin: 0;
+    font-size: 26px;
+    letter-spacing: 0.3em;
+}
+
+.marca a {
+    color: var(--amarelo);
+    text-decoration: none;
+}
+
+.topo nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+}
+
+.topo nav a {
+    color: var(--areia);
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.topo nav a:hover,
+.topo nav a:focus-visible {
+    color: var(--amarelo);
+    border-bottom-color: var(--amarelo);
+}
+
+/* o jogo fica no fim da página: o atalho para ele se destaca no menu */
+.topo nav a.jogar {
+    color: var(--amarelo);
+}
+
+/* --------------------------- área do jogo -------------------------- */
+
+/* O jogo fecha a página, numa faixa mais escura que abre com as mesmas
+   faixas coloridas do topo. A seção tem a altura da janela menos o topo
+   grudado: quem clica em "Jogar" vê só o jogo, com o palco, os botões e a
+   linha de teclas inteiros na tela. */
+.secao-jogo {
+    /* o que fica fora do palco na altura da janela: o topo, a borda e os
+       espaços da seção, a barra de botões e a linha de teclas */
+    --sobra-jogo: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(var(--altura-janela) - var(--altura-topo));
+    margin-top: 64px;
+    padding: 20px 16px 16px;
+    background-color: #0b0818;
+    border-top: 4px solid var(--laranja);
+    box-shadow: 0 -4px 0 var(--vermelho), 0 -8px 0 var(--roxo);
+    /* pelo menu, a seção para logo embaixo do topo: ela já cabe inteira */
+    scroll-margin-top: var(--altura-topo);
+}
+
+/* O palco é a moldura do jogo e é ele que vai para a tela cheia.
+   Dentro dele, a "tela" tem sempre a proporção 900 x 640 e guarda os dois
+   canvas, um sobre o outro: o 3D embaixo e o placar (HUD) por cima. */
+.palco {
+    /* O maior que couber: o menor entre a largura da seção e a altura que
+       sobra na janela vezes 900/640. Fica entre 300 e 1280 px, para não
+       sumir numa janela baixa nem pesar demais num monitor muito grande. */
+    width: min(100%, max(300px, min(1280px, (var(--altura-janela) - var(--sobra-jogo)) * 900 / 640)));
+    background-color: #000;
+    border-radius: 6px;
+    /* moldura feita com sombras, para não deformar a proporção do desenho */
+    box-shadow: 0 0 0 4px var(--linha), 0 0 0 8px #000, 0 12px 40px rgba(0, 0, 0, 0.6);
+    /* os cantos arredondados também cortam os canvas */
+    overflow: hidden;
+}
+
+.tela {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 900 / 640;
+    /* as camadas de dentro (3D, placar e linhas de TV) não se misturam com o resto da página */
+    isolation: isolate;
+}
+
+.tela canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#tela3d {
+    background-color: #000;
+}
+
+#hud {
+    z-index: 1;
+    /* as letras do placar são pixels grandes: ampliadas, continuam nítidas */
+    image-rendering: pixelated;
+}
+
+/* Linhas de TV de tubo e cantos mais escuros. São só um gradiente do CSS
+   por cima dos canvas: o navegador pinta uma vez e o jogo não gasta nada
+   com isso a cada quadro. As linhas seguem a grade de 640 do jogo (uma
+   linha escura a cada 4 pixels), em qualquer tamanho de tela. */
+.tela::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.10) 0,
+            rgba(0, 0, 0, 0.10) calc(100% / 640),
+            transparent calc(100% / 640),
+            transparent calc(100% / 160)),
+        radial-gradient(ellipse at center, transparent 58%, rgba(0, 0, 0, 0.34) 100%);
+}
+
+/* tela cheia: fundo preto e a tela centralizada, sem deformar (faixas
+   pretas nas sobras, como num filme) */
+.palco:fullscreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.palco:fullscreen .tela {
+    width: min(100vw, calc(100vh * 900 / 640));
+}
+
+/* a mesma coisa com o nome antigo, para o Safari. Fica numa regra separada
+   porque um seletor desconhecido invalidaria a regra inteira. */
+.palco:-webkit-full-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.palco:-webkit-full-screen .tela {
+    width: min(100vw, calc(100vh * 900 / 640));
+}
+
+.palco::backdrop {
+    background-color: #000;
+}
+
+/* Retratos dos pistoleiros na página. O tamanho na tela é sempre o mesmo;
+   a versão em 3D tem o dobro de pixels por dentro, para ficar nítida
+   também em telas de alta densidade. */
+canvas.retrato {
+    width: 84px;
+    height: 126px;
+    image-rendering: pixelated;
+}
+
+/* a foto em 3D é reduzida pela metade: suavizar fica melhor que pixelar */
+canvas.retrato.foto3d {
+    image-rendering: auto;
+}
+
+/* teclas */
+kbd {
+    display: inline-block;
+    min-width: 30px;
+    padding: 3px 8px;
+    background-color: #f4efe6;
+    color: #1b1433;
+    border: 1px solid #8f8aa8;
+    border-bottom-width: 4px;
+    border-radius: 5px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.barra-jogo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 16px;
+    margin-top: 14px;
+}
+
+.barra-jogo button {
+    background-color: var(--painel);
+    color: var(--areia);
+    border: 2px solid var(--linha);
+    border-radius: 5px;
+    padding: 6px 14px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+}
+
+.barra-jogo button:hover,
+.barra-jogo button:focus-visible {
+    border-color: var(--amarelo);
+    color: var(--amarelo);
+}
+
+/* sem WebGL (ou sem tela cheia no aparelho) o botão fica apagado */
+.barra-jogo button:disabled {
+    border-color: var(--linha);
+    color: var(--areia-fraca);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* as teclas dos dois jogadores, embaixo dos botões. Cada trecho quebra
+   inteiro, para a linha não se partir no meio das teclas de um jogador. */
+.teclas-jogo {
+    margin: 10px 0 0;
+    color: var(--areia-fraca);
+    font-size: 14px;
+    text-align: center;
+}
+
+.teclas-jogo span {
+    display: inline-block;
+    margin: 0 6px;
+}
+
+.teclas-jogo .laranja {
+    color: var(--laranja);
+}
+
+.teclas-jogo .vermelho {
+    color: var(--vermelho);
+}
+
+/* ----------------------------- seções ----------------------------- */
+
+.secao {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 56px 24px 8px;
+    /* ao pular para a seção pelo menu, o topo grudado não cobre o título */
+    scroll-margin-top: calc(var(--altura-topo) + 16px);
+}
+
+.secao > h2 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 6px;
+    font-size: 30px;
+    color: var(--amarelo);
+}
+
+/* quadradinho de "pixel" antes de cada título */
+.secao > h2::before {
+    content: "";
+    flex: none;
+    width: 18px;
+    height: 18px;
+    background-color: var(--laranja);
+    box-shadow: 6px 6px 0 var(--vermelho);
+}
+
+.secao > .chamada {
+    margin: 0 0 24px;
+    color: var(--areia-fraca);
+    font-size: 18px;
+}
+
+.secao h3 {
+    margin: 32px 0 8px;
+    font-size: 19px;
+    color: var(--laranja);
+}
+
+.secao p {
+    margin: 0 0 16px;
+}
+
+.duas-colunas {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+}
+
+.cartao {
+    background-color: var(--painel);
+    border: 2px solid var(--linha);
+    border-radius: 6px;
+    padding: 18px 20px;
+}
+
+.cartao h3 {
+    margin-top: 0;
+}
+
+.cartao > :last-child {
+    margin-bottom: 0;
+}
+
+.grade-cartoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin: 20px 0;
+}
+
+.rotulo {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 3px;
+    background-color: var(--roxo);
+    color: #fff;
+    font-size: 12px;
+}
+
+.rotulo.novo {
+    background-color: var(--amarelo);
+    color: #1b1433;
+}
+
+/* sobre o projeto: a primeira seção, a que todo mundo vê ao abrir o site */
+.sobre {
+    padding-top: 48px;
+}
+
+.sobre > h2 {
+    font-size: 36px;
+}
+
+.sobre > .chamada {
+    color: var(--areia);
+    font-size: 21px;
+}
+
+/* equipe e aviso, com a faixa laranja no alto como nas caixas dos cartuchos */
+.equipe {
+    border-top: 6px solid var(--laranja);
+}
+
+.equipe .aviso {
+    margin: 16px 0 0;
+    padding-top: 12px;
+    border-top: 1px dashed var(--linha);
+    color: var(--areia-fraca);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ficha técnica */
+.ficha {
+    margin: 0;
+    font-size: 15px;
+}
+
+.ficha div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 7px 0;
+    border-bottom: 1px dashed var(--linha);
+}
+
+.ficha div:last-child {
+    border-bottom: 0;
+}
+
+.ficha dt {
+    color: var(--areia-fraca);
+}
+
+.ficha dd {
+    margin: 0;
+    text-align: right;
+    font-weight: 600;
+}
+
+/* linha do tempo */
+.linha-do-tempo {
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0;
+    border-left: 4px solid var(--linha);
+}
+
+.linha-do-tempo li {
+    position: relative;
+    padding: 0 0 22px 26px;
+}
+
+.linha-do-tempo li::before {
+    content: "";
+    position: absolute;
+    left: -11px;
+    top: 6px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--laranja);
+    border: 4px solid var(--noite);
+}
+
+.linha-do-tempo .ano {
+    display: block;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--amarelo);
+}
+
+.linha-do-tempo strong {
+    display: block;
+    color: #fff;
+}
+
+/* personagens */
+.personagens {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin: 24px 0;
+}
+
+.personagem {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    background-color: var(--azul);
+    border: 4px solid var(--roxo);
+    border-radius: 6px;
+    padding: 14px 18px;
+}
+
+.personagem canvas {
+    flex: none;
+}
+
+.personagem h3 {
+    margin: 0 0 4px;
+    color: #fff;
+}
+
+.personagem p {
+    margin: 0;
+    font-size: 15px;
+}
+
+/* tabelas */
+.rolagem {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 15px;
+}
+
+th, td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--linha);
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--amarelo);
+    background-color: var(--noite-clara);
+    white-space: nowrap;
+}
+
+caption {
+    caption-side: top;
+    padding: 0 0 8px;
+    text-align: left;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--laranja);
+}
+
+.secao p.nota {
+    margin-top: -12px;
+    font-size: 14px;
+    color: var(--areia-fraca);
+}
+
+.lista {
+    margin: 0 0 16px;
+    padding-left: 22px;
+}
+
+.lista li {
+    margin-bottom: 8px;
+}
+
+.lista li::marker {
+    color: var(--laranja);
+}
+
+/* ----------------------- telas mais estreitas ---------------------- */
+
+@media (max-width: 1180px) {
+    /* o menu do topo aperta um pouco para continuar numa linha só */
+    .topo {
+        padding: 0 16px;
+    }
+
+    .topo nav {
+        gap: 4px 12px;
+    }
+
+    .topo nav a {
+        font-size: 13px;
+    }
+
+    /* a linha de teclas embaixo do jogo pode quebrar em duas */
+    .secao-jogo {
+        --sobra-jogo: 220px;
+    }
+}
+
+@media (max-width: 760px) {
+    body {
+        font-size: 16px;
+    }
+
+    .topo {
+        position: static;
+        flex-direction: column;
+        padding: 10px 16px;
+    }
+
+    .duas-colunas {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .secao > h2 {
+        font-size: 24px;
+    }
+
+    .sobre > h2 {
+        font-size: 28px;
+    }
+
+    .sobre > .chamada {
+        font-size: 19px;
+    }
+
+    /* Aqui o topo não fica grudado: as seções não precisam de folga em
+       cima, e o jogo, bem mais largo do que alto, não precisa ocupar a
+       janela inteira. */
+    .secao,
+    .secao-jogo {
+        scroll-margin-top: 0;
+    }
+
+    .secao-jogo {
+        min-height: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
