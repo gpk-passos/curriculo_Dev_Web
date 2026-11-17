@@ -7,3 +7,9 @@ Thumbs.db
 desktop.ini
 .DS_Store
 .claude/
+
+# Builds Unity: os originais comprimidos não vão para o GitHub (o Pages não consegue servi-los).
+# O que vale são as versões descomprimidas, geradas por ferramentas/preparar-build-unity.js
+**/Build/*.gz
+**/Build/*.br
+**/Build/*.unityweb
