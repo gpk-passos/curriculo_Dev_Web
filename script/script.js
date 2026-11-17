@@ -195,10 +195,18 @@
     $('.btn-carrossel.prev').addEventListener('click', () => moverCarrossel(-1));
     $('.btn-carrossel.next').addEventListener('click', () => moverCarrossel(1));
 
-    wrapper.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') { e.preventDefault(); moverCarrossel(-1); }
-        if (e.key === 'ArrowRight') { e.preventDefault(); moverCarrossel(1); }
-    });
+    // As setas movem o carrossel sempre que ele está na tela, mesmo sem foco nele
+    // (antes só funcionavam depois de clicar ou tabular para dentro do carrossel)
+    function carrosselNaTela() {
+        const r = wrapper.getBoundingClientRect();
+        const visivel = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+        return visivel >= Math.min(r.height, window.innerHeight) / 2;
+    }
+
+    function digitando(alvo) {
+        return alvo instanceof HTMLElement &&
+            (alvo.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(alvo.tagName));
+    }
 
     /* Arrastar com o dedo ou o mouse */
     let inicioX = null;
@@ -435,5 +443,12 @@
             return;
         }
         if (e.key === 'Escape' && menuAberto()) fecharNav();
+
+        const seta = e.key === 'ArrowLeft' ? -1 : e.key === 'ArrowRight' ? 1 : 0;
+        if (seta && !menuAberto() && !e.altKey && !e.ctrlKey && !e.metaKey && !e.shiftKey &&
+            !digitando(e.target) && carrosselNaTela()) {
+            e.preventDefault();
+            moverCarrossel(seta);
+        }
     });
 })();
